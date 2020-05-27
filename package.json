@@ -1,0 +1,35 @@
+{
+  "name": "stream-diff",
+  "version": "0.1.0",
+  "description": "Finds the difference between two streams.",
+  "main": "cjs/",
+  "module": "esm/",
+  "scripts": {
+    "test": "jest ./test",
+    "clean": "rm -rf cjs",
+    "lint": "esw --color --watch ./esm ./test",
+    "build": "npm run clean && babel esm --out-dir cjs",
+    "prepare": "npm test && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cullylarson/stream-diff.git"
+  },
+  "author": "Cully Larson <cully.larson@gmail.com>",
+  "homepage": "https://github.com/cullylarson/stream-diff#readme",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.10.0",
+    "@babel/core": "^7.10.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.0",
+    "@babel/preset-env": "^7.10.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "eslint": "^7.1.0",
+    "eslint-plugin-jest": "^23.13.2",
+    "eslint-watch": "^6.0.1",
+    "jest": "^26.0.1",
+    "standard": "^14.3.4"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,8 @@
+**/.DS_Store
+/.vagrant/
+/.idea/
+/node_modules/
+/npm-debug.log
+
+/package-lock.json
+/cjs/
