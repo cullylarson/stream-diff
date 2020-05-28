@@ -3,7 +3,7 @@ import path from 'path'
 import {Readable} from 'stream'
 import CompareStreams from '../esm/'
 
-test.only('Compares two short files with numbers correctly.', () => {
+test('Compares two short files with numbers correctly.', () => {
     const resultCombined = {
         add: [],
         remove: [],
@@ -44,7 +44,7 @@ test.only('Compares two short files with numbers correctly.', () => {
     })
 })
 
-test('Compares two array streams correctly.', () => {
+test.only('Compares two array streams correctly.', () => {
     const resultCombined = {
         add: [],
         remove: [],
@@ -58,16 +58,21 @@ test('Compares two array streams correctly.', () => {
                 objectMode: true,
 
                 read() {
-                    const item = arrCopy.shift()
+                    let item
+                    console.log('pushing')
+                    do {
+                        item = arrCopy.shift()
 
-                    if(!item) {
-                        console.log(`${l} / ending`)
-                        this.push(null)
-                    }
-                    else {
+                        if(!item) {
+                            console.log(`${l} / ending`)
+                            this.push(null)
+                            return
+                        }
+
                         console.log(`${l} / pushing item`)
-                        this.push(item)
                     }
+                    while(this.push(item))
+                    console.log('done pushing')
                 },
             })
         }
