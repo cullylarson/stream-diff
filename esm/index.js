@@ -39,7 +39,7 @@ const hasRecords = streamInfo => streamInfo.records.length !== 0
 // both streams are ended, but at least one has a record left or a partialLine, need to resume to process it
 const needOneMoreIteration = (aInfo, bInfo) => aInfo.state === 'end' && bInfo.state === 'end' && (hasRecords(aInfo) || hasRecords(bInfo) || aInfo.partialLine || bInfo.partialLine)
 
-export default class CompareStreams extends Readable {
+export default class StreamDiff extends Readable {
     constructor(aInfo, bInfo, compare) {
         super({objectMode: true})
 

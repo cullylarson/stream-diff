@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import {Readable} from 'stream'
-import CompareStreams from '../esm/'
+import StreamDiff from '../esm/'
 
 const bufferToStream = buffer => {
     const stream = new Readable()
@@ -68,7 +68,7 @@ const compareTwoArrayStreams = (arrOne, arrTwo, expectAdd, expectRemove) => {
         const streamOne = Readable.from(arrOne)
         const streamTwo = Readable.from(arrTwo)
 
-        const resultStream = new CompareStreams({
+        const resultStream = new StreamDiff({
             stream: streamOne,
             lineToRecord,
             chunkToLines,
@@ -121,7 +121,7 @@ const compareTwoSlowArrayStreams = (arrOne, arrTwo, expectAdd, expectRemove) => 
         const streamOne = slowStreamFromArray(arrOne)
         const streamTwo = slowStreamFromArray(arrTwo)
 
-        const resultStream = new CompareStreams({
+        const resultStream = new StreamDiff({
             stream: streamOne,
             lineToRecord,
             chunkToLines,
@@ -164,7 +164,7 @@ const compareTwoBufferStreams = (bufferOne, bufferTwo, expectAdd, expectRemove) 
             else return 1
         }
 
-        const resultStream = new CompareStreams({
+        const resultStream = new StreamDiff({
             stream: streamOne,
             lineToRecord: x => parseInt(x),
         }, {
@@ -205,7 +205,7 @@ const compareTwoNumberFiles = (pathOne, pathTwo, expectAdd, expectRemove) => {
             else return 1
         }
 
-        const resultStream = new CompareStreams({
+        const resultStream = new StreamDiff({
             stream: fileOne,
             lineToRecord: x => parseInt(x),
         }, {

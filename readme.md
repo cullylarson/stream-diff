@@ -27,7 +27,7 @@ const compare = (a, b) => {
     else return 1
 }
 
-const resultStream = new CompareStreams({
+const resultStream = new StreamDiff({
     stream: fileOne,
     lineToRecord: x => parseInt(x),
 }, {
@@ -142,7 +142,7 @@ const chunkToLines = (chunk, partialLine, shouldGeneratePartialLine) => {
     }
 }
 
-const resultStream = new CompareStreams({
+const resultStream = new StreamDiff({
     stream: fileOne,
     lineToRecord,
     chunkToLines,
@@ -189,7 +189,7 @@ const chunkToLines = (chunk) => {
     }
 }
 
-const resultStream = new CompareStreams({
+const resultStream = new StreamDiff({
     stream: streamOne,
     lineToRecord,
     chunkToLines,
